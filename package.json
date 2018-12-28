@@ -1,0 +1,33 @@
+{
+  "name": "auth-sample-firebase",
+  "version": "1.0.0",
+  "description": "My polished Nuxt.js project",
+  "author": "Shota Sawada",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint",
+    "deploy": "firebase deploy --token ${FIREBASE_TOKEN}"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.0.0",
+    "@nuxtjs/bulma": "^1.2.0",
+    "cross-env": "^5.2.0",
+    "express": "^4.16.3",
+    "firebase": "^5.7.2",
+    "nuxt": "^2.0.0",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.1",
+    "eslint": "^5.0.1",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-vue": "^4.0.0",
+    "firebase-tools": "^6.2.2",
+    "nodemon": "^1.11.0"
+  }
+}
