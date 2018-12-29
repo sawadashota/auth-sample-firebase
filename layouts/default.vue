@@ -11,6 +11,17 @@
           Sample For Authentication
         </nuxt-link>
       </div>
+      <div
+        v-if="isAuthenticated"
+        class="navbar-menu">
+        <div class="navbar-start">
+          <nuxt-link
+            class="navbar-item"
+            to="password">
+            Password
+          </nuxt-link>
+        </div>
+      </div>
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">

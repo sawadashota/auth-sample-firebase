@@ -2,30 +2,25 @@
   <section class="container">
     <div class="columns">
       <div class="column is-half is-offset-one-quarter">
-        <h1 class="title">Login</h1>
+        <h1 class="title">Edit Password</h1>
         <div
           v-if="!!error"
           class="notification is-danger">
           {{ error }}
         </div>
-        <form @submit.prevent="emailLogin">
-          <div class="field">
-            <p class="control has-icons-right">
-              <input
-                v-model="email"
-                class="input"
-                type="email"
-                placeholder="Email"
-              >
-            </p>
-          </div>
+        <div
+          v-if="!!success"
+          class="notification is-success">
+          {{ success }}
+        </div>
+        <form @submit.prevent="submit">
           <div class="field">
             <p class="control">
               <input
                 v-model="password"
                 class="input"
                 type="password"
-                placeholder="Password">
+                placeholder="New Password">
             </p>
           </div>
           <div class="field">
@@ -33,56 +28,51 @@
               <button
                 type="submit"
                 class="button is-success">
-                Login
+                Update
               </button>
             </p>
           </div>
         </form>
       </div>
     </div>
-    <div class="columns">
-      <div class="column is-half is-offset-one-quarter">
-        <LoginButton/>
-      </div>
-    </div>
   </section>
 </template>
 
 <script>
-  import {LoginButton} from '../components';
   import firebase from '../plugins/firebase';
 
   export default {
-    middleware: 'anonymous',
-    components: {
-      LoginButton
-    },
+    middleware: 'authenticated',
     data() {
       return {
-        email: '',
         password: '',
         error: '',
+        success: '',
       };
     },
     methods: {
-      emailLogin: async function () {
+      submit: async function () {
         if (!this.validate()) {
           this.clearPassword();
           return;
         }
 
+        const user = firebase.auth().currentUser;
+
         try {
-          await firebase.auth().signInWithEmailAndPassword(this.email, this.password);
+          await user.updatePassword(this.password);
           this.clearError();
-          this.$router.push({path: '/'});
+          this.success = 'update password successfully';
         } catch (e) {
-          this.clearPassword();
           this.error = e.message;
+        } finally {
+          this.clearPassword();
         }
       },
       validate: function() {
-        if (this.email === '' || this.password === '') {
-          this.error = 'both email and password should be present';
+        this.clearError();
+        if (this.password === '') {
+          this.error = 'password should be present';
           return false;
         }
         return true;
@@ -93,6 +83,7 @@
       clearPassword: function () {
         this.password = '';
       }
+
     }
   };
 </script>

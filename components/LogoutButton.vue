@@ -1,6 +1,6 @@
 <template>
   <a
-    class="button is-warning"
+    class="button"
     @click="googleLogout">Sign Out</a>
 </template>
 
