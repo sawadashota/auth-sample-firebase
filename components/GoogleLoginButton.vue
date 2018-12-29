@@ -1,6 +1,5 @@
 <template>
   <a
-    target="_blank"
     class="button"
     @click="googleLogin">Google Login</a>
 </template>
@@ -11,7 +10,12 @@
   export default {
     methods: {
       googleLogin: async function () {
-        await firebase.auth().signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+        try {
+          await firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
+          this.$router.push({path: '/'});
+        } catch (e) {
+          this.error = e.message;
+        }
       },
     }
   };

@@ -20,6 +20,11 @@
             to="password">
             Password
           </nuxt-link>
+          <nuxt-link
+            class="navbar-item"
+            to="reauth">
+            ReAuthenticate
+          </nuxt-link>
         </div>
       </div>
       <div class="navbar-end">

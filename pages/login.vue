@@ -42,20 +42,20 @@
     </div>
     <div class="columns">
       <div class="column is-half is-offset-one-quarter">
-        <LoginButton/>
+        <GoogleLoginButton/>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-  import {LoginButton} from '../components';
+  import {GoogleLoginButton} from '../components';
   import firebase from '../plugins/firebase';
 
   export default {
     middleware: 'anonymous',
     components: {
-      LoginButton
+      GoogleLoginButton
     },
     data() {
       return {

@@ -18,6 +18,8 @@
         <div class="content">
           uid: {{ user.uid }}
           <br>
+          provider: {{ user.provider }}
+          <br>
           Email Verified: {{ user.emailVerified }}
         </div>
       </div>
