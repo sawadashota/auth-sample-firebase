@@ -15,7 +15,6 @@
         <div class="navbar-item">
           <div class="buttons">
             <LogoutButton v-if="isAuthenticated"/>
-            <LoginButton v-else/>
           </div>
         </div>
       </div>
@@ -26,12 +25,11 @@
 
 <script>
   import {mapGetters} from 'vuex';
-  import {LogoutButton, LoginButton} from '../components';
+  import {LogoutButton} from '../components';
 
   export default {
     components: {
       LogoutButton,
-      LoginButton
     },
     computed: {
       ...mapGetters('user', ['isAuthenticated'])

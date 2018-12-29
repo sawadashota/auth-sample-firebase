@@ -1,7 +1,7 @@
 <template>
   <a
     target="_blank"
-    class="button is-success"
+    class="button"
     @click="googleLogin">Google Login</a>
 </template>
 
