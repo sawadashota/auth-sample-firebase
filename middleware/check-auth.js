@@ -11,7 +11,6 @@ export default async function ({store}) {
     return;
   }
 
-  console.log(user);
-  user.provider = user.providerData[0].providerId;
+  user.providers = user.providerData.map(provider => provider.providerId);
   store.dispatch('user/save', user);
 }

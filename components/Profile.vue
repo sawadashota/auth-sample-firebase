@@ -18,7 +18,7 @@
         <div class="content">
           uid: {{ user.uid }}
           <br>
-          provider: {{ user.provider }}
+          provider: {{ providers }}
           <br>
           Email Verified: {{ user.emailVerified }}
         </div>
@@ -33,6 +33,9 @@
   export default {
     computed: {
       ...mapGetters('user', ['user']),
+      providers: function () {
+        return this.user.providers.join(', ')
+      }
     },
   };
 </script>

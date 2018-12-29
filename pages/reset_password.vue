@@ -2,13 +2,18 @@
   <section class="container">
     <div class="columns">
       <div class="column is-half is-offset-one-quarter">
-        <h1 class="title">Login</h1>
+        <h1 class="title">Reset Password</h1>
         <div
           v-if="!!error"
           class="notification is-danger">
           {{ error }}
         </div>
-        <form @submit.prevent="emailLogin">
+        <div
+          v-if="!!success"
+          class="notification is-success">
+          {{ success }}
+        </div>
+        <form @submit.prevent="submit">
           <div class="field">
             <p class="control has-icons-right">
               <input
@@ -21,84 +26,67 @@
           </div>
           <div class="field">
             <p class="control">
-              <input
-                v-model="password"
-                class="input"
-                type="password"
-                placeholder="Password">
-            </p>
-          </div>
-          <div class="field">
-            <p class="control">
               <button
                 type="submit"
                 class="button is-primary">
-                Login
+                Send Email
               </button>
             </p>
           </div>
           <p>
-            <nuxt-link to="/reset_password">
-              Forget a password?
+            <nuxt-link to="/login">
+              Go Back Login
             </nuxt-link>
           </p>
         </form>
-      </div>
-    </div>
-    <div class="columns">
-      <div class="column is-half is-offset-one-quarter">
-        <h2 class="title is-4">Login Via SNS Account</h2>
-        <GoogleLoginButton/>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-  import {GoogleLoginButton} from '../components';
   import firebase from '../plugins/firebase';
 
   export default {
     middleware: 'anonymous',
-    components: {
-      GoogleLoginButton
-    },
     data() {
       return {
         email: '',
-        password: '',
         error: '',
+        success: '',
       };
     },
     methods: {
-      emailLogin: async function () {
+      submit: async function () {
         if (!this.validate()) {
-          this.clearPassword();
           return;
         }
 
+        firebase.auth().useDeviceLanguage();
         try {
-          await firebase.auth().signInWithEmailAndPassword(this.email, this.password);
-          this.clearError();
-          this.$router.push({path: '/'});
+          await firebase.auth().sendPasswordResetEmail(this.email);
+          this.clearNotification();
+          this.clearEmail();
+          this.success = 'sent email. please check your inbox and access to reset password page';
         } catch (e) {
-          this.clearPassword();
+          this.clearNotification();
           this.error = e.message;
         }
       },
       validate: function() {
-        if (this.email === '' || this.password === '') {
-          this.error = 'both email and password should be present';
+        if (this.email === '') {
+          this.error = 'email should be present';
           return false;
         }
         return true;
       },
-      clearError: function () {
-        this.error = '';
+      clearEmail: function() {
+        this.email = '';
       },
-      clearPassword: function () {
-        this.password = '';
-      }
+      clearNotification: function () {
+        this.error = '';
+        this.success = '';
+      },
     }
   };
 </script>

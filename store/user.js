@@ -4,7 +4,7 @@ export const state = () => ({
   photoURL: '',
   email: '',
   emailVerified: false,
-  provider: '', // password, google or etc...
+  providers: [], // password, google or etc...
 });
 
 export const mutations = {
@@ -16,13 +16,13 @@ export const mutations = {
     state.emailVerified = false;
   },
 
-  save(state, {uid, displayName, photoURL, email, emailVerified, provider}) {
+  save(state, {uid, displayName, photoURL, email, emailVerified, providers}) {
     state.uid = uid;
     state.displayName = displayName;
     state.photoURL = photoURL;
     state.email = email;
     state.emailVerified = emailVerified;
-    state.provider = provider;
+    state.providers = providers;
   },
 };
 

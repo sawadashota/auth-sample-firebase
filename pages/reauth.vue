@@ -2,8 +2,22 @@
   <section class="container">
     <div class="columns">
       <div class="column is-half is-offset-one-quarter">
-        <ReAuthWithCredentialsForm v-if="isPassword"/>
-        <ReAuthWithGoogleButton v-if="isGoogle"/>
+        <h1 class="title">Re Authenticate</h1>
+      </div>
+    </div>
+    <div
+      v-if="hasPasswordProvider"
+      class="columns">
+      <div class="column is-half is-offset-one-quarter">
+        <ReAuthWithCredentialsForm/>
+      </div>
+    </div>
+    <div
+      v-if="hasSNSProviders"
+      class="columns">
+      <div class="column is-half is-offset-one-quarter">
+        <h2 class="title is-4">Re Authenticate SNS Account</h2>
+        <ReAuthWithGoogleButton v-if="hasGoogleProvider"/>
       </div>
     </div>
   </section>
@@ -11,7 +25,6 @@
 
 <script>
   import {mapGetters} from 'vuex';
-  import firebase from '../plugins/firebase';
   import {ReAuthWithCredentialsForm, ReAuthWithGoogleButton} from '../components';
 
   export default {
@@ -30,26 +43,16 @@
     },
     computed: {
       ...mapGetters('user', ['user']),
-      isPassword: function () {
-        return this.user.provider === 'password';
+      hasPasswordProvider: function () {
+        return this.user.providers.includes('password');
       },
-      isGoogle: function () {
-        return this.user.provider === 'google.com';
+      hasSNSProviders: function () {
+        return this.user.providers.includes('google.com');
+      },
+      hasGoogleProvider: function () {
+        return this.user.providers.includes('google.com');
       }
     },
-    methods: {
-      clearError: function () {
-        this.error = '';
-      },
-      reAuthWithGoogle: async function() {
-        const user = firebase.auth().currentUser;
-        try {
-          await user.reauthenticateWithRedirect(new firebase.auth.GoogleAuthProvider());
-        } catch (e) {
-          this.error = e.message;
-        }
-      },
-    }
   };
 </script>
 

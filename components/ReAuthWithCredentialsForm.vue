@@ -1,6 +1,5 @@
 <template>
   <section>
-    <h1 class="title">Re Authenticate</h1>
     <div
       v-if="!!error"
       class="notification is-danger">
@@ -35,7 +34,7 @@
         <p class="control">
           <button
             type="submit"
-            class="button is-success">
+            class="button is-primary">
             Submit
           </button>
         </p>
@@ -68,6 +67,7 @@
         try {
           await user.reauthenticateAndRetrieveDataWithCredential(credential);
           this.clearNotification();
+          this.clearForm();
           this.success = 're authenticated successfully!';
         } catch (e) {
           this.clearNotification();
@@ -87,6 +87,10 @@
       clearNotification: function () {
         this.error = '';
         this.success = '';
+      },
+      clearForm: function () {
+        this.email = '';
+        this.clearPassword();
       },
       clearPassword: function () {
         this.password = '';

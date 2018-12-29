@@ -27,7 +27,7 @@
             <p class="control">
               <button
                 type="submit"
-                class="button is-success">
+                class="button is-primary">
                 Update
               </button>
             </p>
