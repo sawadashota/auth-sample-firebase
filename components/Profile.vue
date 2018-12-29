@@ -20,7 +20,13 @@
           <br>
           provider: {{ providers }}
           <br>
-          Email Verified: {{ user.emailVerified }}
+          Email Verified:
+          <span v-if="user.emailVerified">
+            true
+          </span>
+          <span v-else>
+            <SendEmailVerificationButton/>
+          </span>
         </div>
       </div>
     </div>
@@ -29,8 +35,12 @@
 
 <script>
   import {mapGetters} from 'vuex';
+  import SendEmailVerificationButton from './SendEmailVerificationButton';
 
   export default {
+    components: {
+      SendEmailVerificationButton
+    },
     computed: {
       ...mapGetters('user', ['user']),
       providers: function () {
