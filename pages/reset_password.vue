@@ -34,7 +34,7 @@
             </p>
           </div>
           <p>
-            <nuxt-link to="/login">
+            <nuxt-link to="/signin">
               Go Back Login
             </nuxt-link>
           </p>

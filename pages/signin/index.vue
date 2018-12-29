@@ -2,7 +2,7 @@
   <section class="container">
     <div class="columns">
       <div class="column is-half is-offset-one-quarter">
-        <h1 class="title">Login</h1>
+        <h1 class="title">Sign In</h1>
         <div
           v-if="!!error"
           class="notification is-danger">
@@ -33,7 +33,7 @@
               <button
                 type="submit"
                 class="button is-primary">
-                Login
+                Sign In
               </button>
             </p>
           </div>
@@ -47,6 +47,12 @@
     </div>
     <div class="columns">
       <div class="column is-half is-offset-one-quarter">
+        <h2 class="title is-4">Email Link Sign In</h2>
+        <SignInLinkLoginForm/>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column is-half is-offset-one-quarter">
         <h2 class="title is-4">Login Via SNS Account</h2>
         <GoogleLoginButton/>
       </div>
@@ -55,13 +61,14 @@
 </template>
 
 <script>
-  import {GoogleLoginButton} from '../components';
-  import firebase from '../plugins/firebase';
+  import {GoogleLoginButton, SignInLinkLoginForm} from '../../components';
+  import firebase from '../../plugins/firebase';
 
   export default {
     middleware: 'anonymous',
     components: {
-      GoogleLoginButton
+      GoogleLoginButton,
+      SignInLinkLoginForm
     },
     data() {
       return {

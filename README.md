@@ -1,6 +1,14 @@
 # auth-sample-firebase
 
-> My polished Nuxt.js project
+sample for Google Authn with Firebase
+
+* Google Sign In
+* Email + Password Sign In
+* Email Link Sign In
+* Reset Password
+* Email Verification
+* Re Authentication
+* Update Password
 
 ## Build Setup
 
@@ -19,4 +27,3 @@ $ yarn start
 $ yarn run generate
 ```
 
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).

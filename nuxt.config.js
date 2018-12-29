@@ -4,6 +4,7 @@ module.exports = {
   mode: 'spa',
 
   env: {
+    baseUrl: process.env.BASE_URL || 'https://auth-sample-bfb2c.firebaseapp.com',
     firebase: {
       apiKey: process.env.FIREBASE_APIKEY,
       authDomain: process.env.FIREBASE_AUTHDOMAIN,

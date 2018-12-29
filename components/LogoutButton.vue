@@ -12,7 +12,7 @@
       googleLogout: async function() {
         await firebase.auth().signOut();
         this.$store.dispatch('user/clear');
-        this.$router.push({name: 'login'});
+        this.$router.push({path: '/signin'});
       },
     }
   };
