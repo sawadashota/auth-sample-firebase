@@ -1,5 +1,7 @@
 # auth-sample-firebase
 
+[![Build Status](https://travis-ci.org/sawadashota/auth-sample-firebase.svg?branch=master)](https://travis-ci.org/sawadashota/auth-sample-firebase)
+
 sample for Google Authn with Firebase
 
 * Google Sign In
@@ -9,6 +11,7 @@ sample for Google Authn with Firebase
 * Email Verification
 * Re Authentication
 * Update Password
+* Phone Number Verification
 
 ## Build Setup
 
