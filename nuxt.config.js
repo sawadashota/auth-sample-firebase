@@ -24,7 +24,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: 'Firebase Authentication Sample',
     meta: [
       {charset: 'utf-8'},
       {name: 'viewport', content: 'width=device-width, initial-scale=1'},
@@ -41,8 +41,8 @@ module.exports = {
 
   loading: {color: '#3B8070'},
   loadingIndicator: {
-    name: 'chasing-dots',
-    color: '#0288D1',
+    name: 'three-bounce',
+    color: '#24D160',
   },
 
   /*
@@ -60,7 +60,7 @@ module.exports = {
   */
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
-    '@nuxtjs/axios',
+    // '@nuxtjs/axios',
     // Doc:https://github.com/nuxt-community/modules/tree/master/packages/bulma
     '@nuxtjs/bulma'
   ],
