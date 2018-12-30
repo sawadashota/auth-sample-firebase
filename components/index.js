@@ -4,3 +4,5 @@ export {default as Profile} from './Profile.vue';
 export {default as ReAuthWithCredentialsForm} from './ReAuthWithCredentialsForm.vue';
 export {default as ReAuthWithGoogleButton} from './ReAuthWithGoogleButton.vue';
 export {default as SignInLinkLoginForm} from './SignInLinkLoginForm.vue';
+export {default as ReAuthWithPhoneNumberForm} from './ReAuthWithPhoneNumberForm.vue';
+export {default as ReAuthWithPhoneNumberCodeForm} from './ReAuthWithPhoneNumberCodeForm.vue';

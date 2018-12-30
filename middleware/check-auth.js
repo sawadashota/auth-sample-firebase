@@ -1,4 +1,5 @@
 import auth from'~/plugins/auth';
+import storeUser from'~/plugins/store-user';
 
 export default async function ({store}) {
   if (store.getters['user/isAuthenticated']) {
@@ -11,6 +12,5 @@ export default async function ({store}) {
     return;
   }
 
-  user.providers = user.providerData.map(provider => provider.providerId);
-  store.dispatch('user/save', user);
+  storeUser(store, user);
 }

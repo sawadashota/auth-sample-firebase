@@ -20,6 +20,18 @@
           <br>
           provider: {{ providers }}
           <br>
+          Phone:
+          <span v-if="!!user.phoneNumber">
+            {{ user.phoneNumber }}
+          </span>
+          <span v-else>
+            <nuxt-link
+              class="button is-small"
+              to="/verify_phone">
+              Verify Phone Number
+            </nuxt-link>
+          </span>
+          <br>
           Email Verified:
           <span v-if="user.emailVerified">
             true
