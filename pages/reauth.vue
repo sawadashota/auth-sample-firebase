@@ -25,7 +25,7 @@
 
 <script>
   import {mapGetters} from 'vuex';
-  import {ReAuthWithCredentialsForm, ReAuthWithGoogleButton} from '../components';
+  import {ReAuthWithCredentialsForm, ReAuthWithGoogleButton} from '~/components';
 
   export default {
     middleware: 'authenticated',

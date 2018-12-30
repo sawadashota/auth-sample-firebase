@@ -1,4 +1,4 @@
-import firebase from '../plugins/firebase';
+import firebase from '~/plugins/firebase';
 
 export default async function ({store, redirect}) {
   if (firebase.auth().isSignInWithEmailLink(window.location.href)) {

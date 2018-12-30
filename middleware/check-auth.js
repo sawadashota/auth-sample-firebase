@@ -1,4 +1,4 @@
-import auth from'../plugins/auth';
+import auth from'~/plugins/auth';
 
 export default async function ({store}) {
   if (store.getters['user/isAuthenticated']) {

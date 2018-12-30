@@ -13,7 +13,7 @@
 
 <script>
   import {mapGetters} from 'vuex';
-  import {Profile} from '../components';
+  import {Profile} from '~/components';
 
   export default {
     middleware: 'authenticated',

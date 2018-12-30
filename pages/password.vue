@@ -39,7 +39,7 @@
 </template>
 
 <script>
-  import firebase from '../plugins/firebase';
+  import firebase from '~/plugins/firebase';
 
   export default {
     middleware: 'authenticated',

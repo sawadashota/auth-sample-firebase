@@ -1,3 +1,5 @@
+export BASE_URL=http://localhost:3000
+
 export FIREBASE_TOKEN=
 
 export FIREBASE_APIKEY=

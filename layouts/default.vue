@@ -41,7 +41,7 @@
 
 <script>
   import {mapGetters} from 'vuex';
-  import {LogoutButton} from '../components';
+  import {LogoutButton} from '~/components';
 
   export default {
     components: {

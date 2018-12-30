@@ -61,8 +61,8 @@
 </template>
 
 <script>
-  import {GoogleLoginButton, SignInLinkLoginForm} from '../../components';
-  import firebase from '../../plugins/firebase';
+  import {GoogleLoginButton, SignInLinkLoginForm} from '~/components';
+  import firebase from '~/plugins/firebase';
 
   export default {
     middleware: 'anonymous',
